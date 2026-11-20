@@ -34,7 +34,7 @@ function loadPdf(){
   var box=$('#pdfv'),base=document.baseURI,dpr=Math.min(window.devicePixelRatio||1,2);
   /* computers with a built-in PDF viewer: show the real PDF with its own toolbar */
   if(navigator.pdfViewerEnabled&&window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
-    var f=document.createElement('iframe');f.className='pdfframe';f.title='Resume of '+S.name;f.src=new URL(Rz.pdf,base).href+'#view=FitH';
+    var f=document.createElement('iframe');f.className='pdfframe';f.title='Resume of '+S.name;f.src=new URL(Rz.pdf,base).href+'#navpanes=0&pagemode=none&view=FitH';
     f.style.height=Math.round(box.clientWidth*842/595+56)+'px';box.innerHTML='';box.appendChild(f);return;
   }
   import(new URL('js/vendor/pdf.min.mjs',base).href).then(function(L){
