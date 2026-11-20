@@ -32,6 +32,11 @@ var pdfTried=false;
 function loadPdf(){
   if(pdfTried||!Rz.pdf||window.__noPdf)return;pdfTried=true;
   var box=$('#pdfv'),base=document.baseURI,dpr=Math.min(window.devicePixelRatio||1,2);
+  /* computers with a built-in PDF viewer: show the real PDF with its own toolbar */
+  if(navigator.pdfViewerEnabled&&window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    var f=document.createElement('iframe');f.className='pdfframe';f.title='Resume of '+S.name;f.src=new URL(Rz.pdf,base).href+'#view=FitH';
+    f.style.height=Math.round(box.clientWidth*842/595+56)+'px';box.innerHTML='';box.appendChild(f);return;
+  }
   import(new URL('js/vendor/pdf.min.mjs',base).href).then(function(L){
     L.GlobalWorkerOptions.workerSrc=new URL('js/vendor/pdf.worker.min.mjs',base).href;
     return L.getDocument({url:new URL(Rz.pdf,base).href}).promise;

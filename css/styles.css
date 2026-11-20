@@ -211,3 +211,4 @@ dialog.sheet .panel .head{padding-right:5rem}
 .pdfv canvas{display:block;width:100%;height:auto;border-radius:6px;background:#fff}
 .pdfv canvas+canvas{margin-top:.8rem}
 .pdfv img{width:100%;height:auto;display:block}
+.pdfv .pdfframe{display:block;width:100%;border:0;border-radius:6px;background:#fff}
