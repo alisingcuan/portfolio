@@ -100,11 +100,9 @@ var SITE = {
   /* ---------- RESUME PAGE ---------- */
   resume: {
     heading: `Resume`,
-    sub: `Experience, skills, and training in one page.`,
+    sub: ``,
     image: `images/resume.jpg`,             /* larawan ng resume */
-    pdf: `assets/Alyssa_Singcuan_Resume.pdf`, /* PDF na dina-download */
-    focusTitle: `Focus`,
-    focus: `Social media management, content planning, administrative support, and workflow automation.`
+    pdf: `assets/Alyssa_Singcuan_Resume.pdf` /* PDF na dina-download */
   }
 };
 
@@ -129,7 +127,7 @@ var PROJECTS = [
   {
     id: `academic-activity-tracker`,
     cls: `c1`,
-    cover: ``,
+    cover: `tracker-interface.jpg`,
     title: `Academic Activity Tracker & Ledger`,
     cat: `Systems · Google Sheets and Apps Script`,
     short: `A spreadsheet system that tracks academic activities, deadlines, and submissions, automated with Apps Script.`,
@@ -150,7 +148,12 @@ var PROJECTS = [
     tools: [`Google Sheets`, `Google Apps Script`, `Google Drive`, `Workflow automation`, `Records management`],
     toolsNote: ``,
     results: ``,
-    images: []
+    images: [
+      { file: `tracker-interface.jpg`, caption: `The full tracker: course, activity, deadline, status, and submission records in one view` },
+      { file: `tracker-rows.jpg`, caption: `Status, submission links, outputs, and proof links for each activity` },
+      { file: `apps-script-code.jpg`, caption: `The Google Apps Script that automates notes and proof syncing (folder IDs hidden)` },
+      { file: `drive-folders.jpg`, caption: `The organized Google Drive folder structure the script connects to` }
+    ]
   },
   {
     id: `social-media-campaign-support`,
@@ -213,28 +216,28 @@ var PROJECTS = [
    ========================================================================== */
 var TOOLS = [
   { group: `Create`, items: [
-    { n: `Canva`, logo: ``, what: `An online design tool with ready-made templates.`, use: `Social posts, carousels, covers, and graphics that match a brand.`, why: `Clients need a steady stream of on-brand visuals. Templates and brand kits keep colors and fonts consistent and let me deliver quickly.` },
-    { n: `CapCut`, logo: ``, what: `A video editor built for short clips.`, use: `Reels, TikToks, and Shorts: trimming, captions, music, and transitions.`, why: `Short video earns strong reach on social platforms. Quick, clean editing keeps a posting schedule on track.` },
+    { n: `Canva`, logo: `canva.png`, what: `An online design tool with ready-made templates.`, use: `Social posts, carousels, covers, and graphics that match a brand.`, why: `Clients need a steady stream of on-brand visuals. Templates and brand kits keep colors and fonts consistent and let me deliver quickly.` },
+    { n: `CapCut`, logo: `capcut.png`, what: `A video editor built for short clips.`, use: `Reels, TikToks, and Shorts: trimming, captions, music, and transitions.`, why: `Short video earns strong reach on social platforms. Quick, clean editing keeps a posting schedule on track.` },
     { n: `Google Flow`, logo: ``, what: `Google's AI tool for making video clips from text prompts.`, use: `Drafting short visual ideas and concept clips.`, why: `AI video tools speed up first drafts. Knowing them lets me offer ideas fast, then review and polish before anything is published.` }
   ]},
   { group: `Marketing`, items: [
-    { n: `Meta Ads Manager`, logo: ``, what: `Meta's tool for creating and tracking ads on Facebook and Instagram.`, use: `Setting up campaigns, audiences, and budgets, and reading the results.`, why: `Posts alone reach a limited audience. Understanding ads helps me support clients who want new customers and need to see what is working.` },
-    { n: `Mailchimp`, logo: ``, what: `An email marketing platform.`, use: `Building newsletters, managing subscriber lists, and scheduling sends.`, why: `Email reaches people directly without depending on an algorithm. Clean lists and steady sends keep a client's audience engaged.` }
+    { n: `Meta Ads Manager`, logo: `meta.png`, what: `Meta's tool for creating and tracking ads on Facebook and Instagram.`, use: `Setting up campaigns, audiences, and budgets, and reading the results.`, why: `Posts alone reach a limited audience. Understanding ads helps me support clients who want new customers and need to see what is working.` },
+    { n: `Mailchimp`, logo: `mailchimp.png`, what: `An email marketing platform.`, use: `Building newsletters, managing subscriber lists, and scheduling sends.`, why: `Email reaches people directly without depending on an algorithm. Clean lists and steady sends keep a client's audience engaged.` }
   ]},
   { group: `Organize and communicate`, items: [
-    { n: `Trello`, logo: ``, what: `A board-style task manager with lists and cards.`, use: `Tracking content, tasks, and client requests from idea to done.`, why: `Clients can see what is planned, in progress, and finished. Clear boards cut back-and-forth and missed deadlines.` },
-    { n: `Slack`, logo: ``, what: `Team messaging organized into channels.`, use: `Daily updates, quick questions, and shared files with a client's team.`, why: `Many remote teams run on it. Clear replies and tidy channels keep communication fast and easy to find later.` },
-    { n: `Zoom`, logo: ``, what: `A video meeting platform.`, use: `Client calls, check-ins, and screen sharing.`, why: `Remote work depends on clear meetings. Scheduling, hosting, and sharing a screen smoothly makes every session look professional.` },
-    { n: `Microsoft Teams`, logo: ``, what: `Chat and meetings inside Microsoft 365.`, use: `Meetings, chat, and shared files for organizations that use Microsoft.`, why: `Some clients use Teams instead of Slack or Zoom. Being comfortable in it means no setup friction on day one.` }
+    { n: `Trello`, logo: `trello.png`, what: `A board-style task manager with lists and cards.`, use: `Tracking content, tasks, and client requests from idea to done.`, why: `Clients can see what is planned, in progress, and finished. Clear boards cut back-and-forth and missed deadlines.` },
+    { n: `Slack`, logo: `slack.png`, what: `Team messaging organized into channels.`, use: `Daily updates, quick questions, and shared files with a client's team.`, why: `Many remote teams run on it. Clear replies and tidy channels keep communication fast and easy to find later.` },
+    { n: `Zoom`, logo: `zoom.png`, what: `A video meeting platform.`, use: `Client calls, check-ins, and screen sharing.`, why: `Remote work depends on clear meetings. Scheduling, hosting, and sharing a screen smoothly makes every session look professional.` },
+    { n: `Microsoft Teams`, logo: `teams.png`, what: `Chat and meetings inside Microsoft 365.`, use: `Meetings, chat, and shared files for organizations that use Microsoft.`, why: `Some clients use Teams instead of Slack or Zoom. Being comfortable in it means no setup friction on day one.` }
   ]},
   { group: `Office and automation`, items: [
-    { n: `Google Workspace`, logo: ``, what: `Gmail, Calendar, Drive, Docs, and Sheets.`, use: `Managing inboxes, calendars, documents, spreadsheets, and shared folders.`, why: `These are the daily tools of admin work. An organized inbox, calendar, and file system saves a client hours each week.` },
-    { n: `Microsoft Office`, logo: ``, what: `Word, Excel, PowerPoint, and Outlook.`, use: `Documents, spreadsheets, presentations, and reports.`, why: `Many businesses still send and receive files in Office formats. Being fluent means no conversion problems and no delays.` },
-    { n: `Google Apps Script`, logo: ``, what: `A scripting tool that automates Google apps.`, use: `Automating repeated steps in Sheets, Drive, and Gmail, as in my Academic Activity Tracker.`, why: `Automation removes repetitive tasks and human error, so time goes to work that needs judgment.` }
+    { n: `Google Workspace`, logo: `google-workspace.png`, what: `Gmail, Calendar, Drive, Docs, and Sheets.`, use: `Managing inboxes, calendars, documents, spreadsheets, and shared folders.`, why: `These are the daily tools of admin work. An organized inbox, calendar, and file system saves a client hours each week.` },
+    { n: `Microsoft Office`, logo: `microsoft-office.png`, what: `Word, Excel, PowerPoint, and Outlook.`, use: `Documents, spreadsheets, presentations, and reports.`, why: `Many businesses still send and receive files in Office formats. Being fluent means no conversion problems and no delays.` },
+    { n: `Google Apps Script`, logo: `apps-script.png`, what: `A scripting tool that automates Google apps.`, use: `Automating repeated steps in Sheets, Drive, and Gmail, as in my Academic Activity Tracker.`, why: `Automation removes repetitive tasks and human error, so time goes to work that needs judgment.` }
   ]},
   { group: `AI assistants`, items: [
-    { n: `ChatGPT`, logo: ``, what: `An AI assistant from OpenAI.`, use: `Drafting captions, outlining content, brainstorming, and summarizing.`, why: `AI speeds up first drafts. Checking the output for accuracy and brand voice is the skill that makes it useful to a client.` },
-    { n: `Gemini`, logo: ``, what: `Google's AI assistant.`, use: `Research, summaries, and drafting that connects with Google apps.`, why: `It helps me gather and organize information quickly. I still verify facts before they reach a client.` },
-    { n: `Claude`, logo: ``, what: `An AI assistant from Anthropic.`, use: `Drafting, editing, organizing information, and building small tools.`, why: `Good for turning rough notes into clear writing. Human review keeps the final work accurate and on brand.` }
+    { n: `ChatGPT`, logo: `chatgpt.png`, what: `An AI assistant from OpenAI.`, use: `Drafting captions, outlining content, brainstorming, and summarizing.`, why: `AI speeds up first drafts. Checking the output for accuracy and brand voice is the skill that makes it useful to a client.` },
+    { n: `Gemini`, logo: `gemini.png`, what: `Google's AI assistant.`, use: `Research, summaries, and drafting that connects with Google apps.`, why: `It helps me gather and organize information quickly. I still verify facts before they reach a client.` },
+    { n: `Claude`, logo: `claude.png`, what: `An AI assistant from Anthropic.`, use: `Drafting, editing, organizing information, and building small tools.`, why: `Good for turning rough notes into clear writing. Human review keeps the final work accurate and on brand.` }
   ]}
 ];
