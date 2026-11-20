@@ -26,21 +26,7 @@ $('#footer').textContent=S.footer;
 var Rz=S.resume;
 $('#resume-wrap').innerHTML='<a class="back" href="#home">← Back to home</a><h1>'+esc(Rz.heading)+'</h1>'+(Rz.sub?'<p class="sub">'+esc(Rz.sub)+'</p>':'')
 +(Rz.pdf&&!window.__noPdf?'<div class="row" style="margin-top:1.4rem"><a class="btn" href="'+esc(Rz.pdf)+'" download>Download PDF</a></div>':'')
-+'<div class="rs"><div class="paper"><img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414"></div></div>'
-+'<div class="cols"><div class="rv"><h3>'+esc(A.experienceTitle)+'</h3><ol class="tl">'+A.experience.map(function(e){return '<li><h4>'+esc(e.role)+'</h4><div class="when">'+esc(e.place)+' · '+esc(e.when)+'</div><p>'+esc(e.text)+'</p></li>'}).join('')+'</ol></div>'
-+'<div class="rv"><h3>'+esc(A.certsTitle)+'</h3><div class="certs">'+A.certs.map(function(c){return '<div class="cert"><b>'+esc(c.title)+'</b><span>'+esc(c.by)+'</span></div>'}).join('')+'</div></div></div>'
-+'<div class="vals">'+A.values.map(function(v){return '<div class="val rv"><h4>'+esc(v.title)+'</h4><p>'+esc(v.text)+'</p></div>'}).join('')+'</div>';
-/* headings */
-$('#work-head').innerHTML='<div class="eyebrow">'+esc(S.work.eyebrow)+'</div><h2 class="big">'+esc(S.work.heading)+'</h2><p class="sub">'+esc(S.work.sub)+'</p>';
-$('#tools-head').innerHTML='<div class="eyebrow">'+esc(S.tools.eyebrow)+'</div><h2 class="big">'+esc(S.tools.heading)+'</h2><p class="sub">'+esc(S.tools.sub)+'</p>';
-/* contact + footer */
-$('#contact').innerHTML='<div><h2>'+esc(S.contact.heading)+'</h2><div class="em" id="mail">'+esc(S.email)+'</div><p>'+esc(S.contact.text)+'</p></div><div class="cta"><a class="btn" href="'+esc(mail('Hello '+S.shortName))+'">Send an email</a><button class="btn line" type="button" id="copy">Copy email address</button><a class="btn line" href="'+esc(S.linkedin)+'" target="_blank" rel="noopener">LinkedIn</a></div>';
-$('#footer').textContent=S.footer;
-/* resume */
-var Rz=S.resume;
-$('#resume-wrap').innerHTML='<a class="back" href="#home">← Back to home</a><h1>'+esc(Rz.heading)+'</h1>'+(Rz.sub?'<p class="sub">'+esc(Rz.sub)+'</p>':'')
-+(Rz.pdf&&!window.__noPdf?'<div class="row" style="margin-top:1.4rem"><a class="btn" href="'+esc(Rz.pdf)+'" download>Download PDF</a></div>':'')
-+'<div class="rs"><div class="paper"><img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414"></div><aside class="side"><div><h3>Contact</h3><p>'+esc(S.email)+'</p><p><a href="'+esc(S.linkedin)+'" target="_blank" rel="noopener">'+esc(S.linkedin.replace(/^https?:\/\//,'').replace(/\/$/,''))+'</a></p><p>'+esc(S.location)+'</p></div><div><h3>'+esc(Rz.focusTitle)+'</h3><p>'+esc(Rz.focus)+'</p></div></aside></div>';
++'<div class="rs"><div class="paper">'+(Rz.pdf&&!window.__noPdf?'<object class="pdf" data="'+esc(Rz.pdf)+'#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-label="Resume of '+esc(S.name)+'">'+'<img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414">'+'</object>':'<img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414">')+'</div></div>';
 /* routing */
 var H=$('#v-home'),R=$('#v-resume');
 function route(){

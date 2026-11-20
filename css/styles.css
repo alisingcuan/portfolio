@@ -140,6 +140,7 @@ footer{padding-top:2.5rem;padding-bottom:3rem;color:var(--muted);font-size:.9rem
 #resume-wrap .row{justify-content:center}
 #resume-wrap .back{display:block;text-align:left}
 .paper{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(.6rem,2vw,1.1rem);box-shadow:0 24px 50px -30px rgba(43,35,34,.5)}
+.paper .pdf{display:block;width:100%;aspect-ratio:595/842;border:0;border-radius:6px;background:#fff}
 .paper img{width:100%;height:auto;display:block;border-radius:6px;background:#fff}
 .side{position:sticky;top:6rem;display:grid;gap:1.2rem}
 .side h3{font-size:1.5rem;margin-bottom:.5rem}
