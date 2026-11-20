@@ -66,12 +66,19 @@ var tg=$('#tgroups'),panel=$('#panel');
 var logoBase=window.__logoBase||'images/logos/';
 function mark(t,big){return t.logo?'<img src="'+esc(logoBase+t.logo)+'" alt="">':'<span class="ini" aria-hidden="true">'+esc(t.n.charAt(0))+'</span>'}
 tg.innerHTML=TOOLS.map(function(g){return '<div class="tgroup"><h3>'+esc(g.group)+'</h3><div class="tchips">'+g.items.map(function(t){return '<button class="chip" type="button" aria-pressed="false" data-n="'+esc(t.n)+'">'+mark(t)+esc(t.n)+'</button>'}).join('')+'</div></div>'}).join('');
-function pick(n){
+var small=window.matchMedia('(max-width:860px)');
+var sheet=document.createElement('dialog');sheet.className='sheet';sheet.setAttribute('aria-label','Tool details');
+sheet.innerHTML='<button type="button" class="btn line sm sx">Close</button><div class="panel"></div>';document.body.appendChild(sheet);
+sheet.querySelector('.sx').addEventListener('click',function(){sheet.close()});
+sheet.addEventListener('click',function(e){if(e.target===sheet)sheet.close()});
+function pick(n,open){
   var t=null;TOOLS.forEach(function(g){g.items.forEach(function(x){if(x.n===n)t=x})});if(!t)return;
   tg.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c.dataset.n===n)});
-  panel.innerHTML='<div class="swap"><div class="head">'+mark(t)+'<h3>'+esc(t.n)+'</h3></div><div class="blk"><div class="k">What it is</div><p>'+esc(t.what)+'</p></div><div class="blk"><div class="k">What I use it for</div><p>'+esc(t.use)+'</p></div><div class="blk"><div class="k">Why it matters for a VA</div><p>'+esc(t.why)+'</p></div></div>';
+  var html='<div class="swap"><div class="head">'+mark(t)+'<h3>'+esc(t.n)+'</h3></div><div class="blk"><div class="k">What it is</div><p>'+esc(t.what)+'</p></div><div class="blk"><div class="k">What I use it for</div><p>'+esc(t.use)+'</p></div><div class="blk"><div class="k">Why it matters for a VA</div><p>'+esc(t.why)+'</p></div></div>';
+  panel.innerHTML=html;sheet.querySelector('.panel').innerHTML=html;
+  if(open&&small.matches){if(!sheet.open)sheet.showModal();sheet.scrollTop=0}
 }
-tg.addEventListener('click',function(e){var c=e.target.closest('.chip');if(c)pick(c.dataset.n)});
+tg.addEventListener('click',function(e){var c=e.target.closest('.chip');if(c)pick(c.dataset.n,true)});
 if(TOOLS[0]&&TOOLS[0].items[0])pick(TOOLS[0].items[0].n);
 /* copy email */
 var cp=$('#copy');
