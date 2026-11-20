@@ -26,12 +26,31 @@ $('#footer').textContent=S.footer;
 var Rz=S.resume;
 $('#resume-wrap').innerHTML='<a class="back" href="#home">← Back to home</a><h1>'+esc(Rz.heading)+'</h1>'+(Rz.sub?'<p class="sub">'+esc(Rz.sub)+'</p>':'')
 +(Rz.pdf&&!window.__noPdf?'<div class="row" style="margin-top:1.4rem"><a class="btn" href="'+esc(Rz.pdf)+'" download>Download PDF</a></div>':'')
-+'<div class="rs"><div class="paper">'+(Rz.pdf&&!window.__noPdf?'<object class="pdf" data="'+esc(Rz.pdf)+'#toolbar=0&navpanes=0&view=FitH" type="application/pdf" aria-label="Resume of '+esc(S.name)+'">'+'<img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414">'+'</object>':'<img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414">')+'</div></div>';
++'<div class="rs"><div class="paper"><div class="pdfv" id="pdfv">'+'<img src="'+esc(Rz.image)+'" alt="Resume of '+esc(S.name)+'" width="1000" height="1414">'+'</div></div></div>';
+/* real PDF, drawn with PDF.js; the image stays as fallback */
+var pdfTried=false;
+function loadPdf(){
+  if(pdfTried||!Rz.pdf||window.__noPdf)return;pdfTried=true;
+  var box=$('#pdfv'),base=document.baseURI,dpr=Math.min(window.devicePixelRatio||1,2);
+  import(new URL('js/vendor/pdf.min.mjs',base).href).then(function(L){
+    L.GlobalWorkerOptions.workerSrc=new URL('js/vendor/pdf.worker.min.mjs',base).href;
+    return L.getDocument({url:new URL(Rz.pdf,base).href}).promise;
+  }).then(function(doc){
+    var w=Math.max(box.clientWidth,320),jobs=[];
+    for(var n=1;n<=doc.numPages;n++)jobs.push(doc.getPage(n).then(function(pg){
+      var v0=pg.getViewport({scale:1}),sc=(w*dpr)/v0.width,v=pg.getViewport({scale:sc});
+      var c=document.createElement('canvas');c.width=Math.floor(v.width);c.height=Math.floor(v.height);
+      return pg.render({canvasContext:c.getContext('2d'),viewport:v}).promise.then(function(){return c});
+    }));
+    return Promise.all(jobs);
+  }).then(function(cs){box.innerHTML='';cs.forEach(function(c){box.appendChild(c)});box.setAttribute('role','img');box.setAttribute('aria-label','Resume of '+S.name)})
+  .catch(function(){/* keep the image */});
+}
 /* routing */
 var H=$('#v-home'),R=$('#v-resume');
 function route(){
   var h=location.hash.slice(1),r=h==='resume';
-  H.hidden=r;R.hidden=!r;
+  H.hidden=r;R.hidden=!r;if(r)loadPdf();
   document.querySelectorAll('nav a[data-n]').forEach(function(a){a.classList.toggle('on',a.dataset.n===h)});
   if(r||!h||h==='home'){window.scrollTo(0,0)}else{var e=document.getElementById(h);if(e)e.scrollIntoView()}
 }
